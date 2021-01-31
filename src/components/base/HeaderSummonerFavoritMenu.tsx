@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import OutsideClickHandler from 'react-outside-click-handler';
 import HorizontalTab from '../common/HorizontalTab';
-import useTabSummoners from './hooks/useTabSummoners';
+import useSummonerFavoritMenu from './hooks/useSummonerFavoritMenu';
+import RecentSummonerList from '../search/RecentSummonerList';
 
-export type HeaderSummonerSearchMenuProps = {};
+export type HeaderSummonerFavoritMenuProps = {};
 
-function HeaderSummonerSearchMenu(props: HeaderSummonerSearchMenuProps) {
-  const { visible, tab } = useTabSummoners('recent');
+function HeaderSummonerFavoritMenu(props: HeaderSummonerFavoritMenuProps) {
+  const { visible, tab } = useSummonerFavoritMenu('recent');
+
   if (!visible) return null;
 
   return (
@@ -16,6 +18,7 @@ function HeaderSummonerSearchMenu(props: HeaderSummonerSearchMenuProps) {
         <HorizontalTab.TabItem name="recent" text="최근검색" />
         <HorizontalTab.TabItem name="favorit" text="즐겨찾기" />
       </HorizontalTab>
+      <RecentSummonerList />
     </Block>
   );
 }
@@ -28,4 +31,4 @@ const Block = styled.div`
   border-radius: 0.125rem;
 `;
 
-export default HeaderSummonerSearchMenu;
+export default HeaderSummonerFavoritMenu;

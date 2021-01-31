@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import HomeReponsive from '../base/HomeReponsive';
 import SearchInput from '../search/SearchInput';
-import HeaderSummonerSearchMenu from './HeaderSummonerSearchMenu';
+import HeaderSummonerFavoritMenu from './HeaderSummonerFavoritMenu';
 
 export type HeaderProps = {};
 
@@ -13,7 +13,7 @@ function Header(props: HeaderProps) {
     <Block>
       <Inner>
         <SearchInput initial="" />
-        <HeaderSummonerSearchMenu />
+        <HeaderSummonerFavoritMenu />
       </Inner>
     </Block>
   );

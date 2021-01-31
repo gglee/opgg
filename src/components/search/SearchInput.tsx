@@ -1,17 +1,25 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as GGIcon } from '../../static/svg/icon-gg.svg';
-import { debounce } from 'throttle-debounce';
+import useSearch from './hooks/useSearch';
 
 export type SearchInputProps = {
   initial: string;
 };
 
 function SearchInput({ initial }: SearchInputProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const { onShowMenu, onCloseMenu, input, onChange, inputRef } = useSearch(initial);
+
   return (
     <Block>
-      <input placeholder="소환사명,챔피언…" ref={inputRef} />
+      <input
+        placeholder="소환사명,챔피언…"
+        ref={inputRef}
+        onFocus={onShowMenu}
+        onBlur={onCloseMenu}
+        onChange={onChange}
+        value={input}
+      />
       <GGIcon />
     </Block>
   );
